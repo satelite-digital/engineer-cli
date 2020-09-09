@@ -1,0 +1,31 @@
+{
+  "name": "@ericksatelite/engineer-cli",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "engineer": "bin/engineer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satelite-digital/cli.git"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "cli",
+    "automation",
+    "satelite"
+  ],
+  "preferGlobal": true,
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "ora": "^5.1.0"
+  }
+}
