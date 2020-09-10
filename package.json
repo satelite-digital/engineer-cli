@@ -25,6 +25,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ericksatelite/engineer": "^1.0.4",
     "minimist": "^1.2.5",
     "ora": "^5.1.0"
   }
