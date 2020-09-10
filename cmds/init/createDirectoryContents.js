@@ -1,11 +1,16 @@
 const fs = require('fs')
 const CURR_DIR = process.cwd();
 
-const createDirectoryContents = (templatePath, newProjectPath)=>{
-  
+const ora = require('ora');
+
+
+
+const createDirectoryContents = (templatePath, newProjectPath, spinner = ora('Creando proyecto').start())=>{
+    spinner.succeed(`Creating directory contents for ${templatePath}`)  
+    spinner = spinner.start()
     const filesToCreate = fs.readdirSync(templatePath);
   
-    filesToCreate.forEach(file => {
+    filesToCreate.forEach((file, i) => {
       const origFilePath = `${templatePath}/${file}`;
       
       // get stats about the current file
@@ -34,7 +39,8 @@ const createDirectoryContents = (templatePath, newProjectPath)=>{
         }else{
           _newProjectPath = `${file}`
         }
-        createDirectoryContents(`${templatePath}/${file}`, _newProjectPath);
+        createDirectoryContents(`${templatePath}/${file}`, _newProjectPath, spinner);
+        
       }
     });
   }

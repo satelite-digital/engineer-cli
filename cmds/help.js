@@ -2,29 +2,19 @@ const menus = {
   main: `
     outside [command] <options>
 
-    init  .............. create project config file
-    add  .............. add starter project using templates
+    init  .............. initialize or create project using a template 
     studio .............. start engineer studio to register and customize project
     build .............. use customization and template to build project
     version ............ show package version
     help ............... show help menu for a command`,
 
     init: `
-    engineer init
-
-    --template, -t ..... an example flag`,
-    add: `
-    engineer add svelte-spa-template node-rest-template svelte-pwa-template
-
-    --template, -t ..... an example flag`,
+    engineer init`
+          ,
     studio: `
-    engineer studio
-    
-    No options available`,
+    engineer studio`,
     build: `
-    engineer build
-
-    --template, -t ..... an example flag`,
+    engineer build`,
 }
 
 module.exports = (args) => {

@@ -1,9 +1,18 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
+const ora = require("ora")
+const boxen = require("boxen")
+const chalk = require("chalk")
 const createDirectoryContents = require("./createDirectoryContents")
 
+const concat = function(strings){
+  return strings.join()
+}
+
 const CURR_DIR = process.cwd();
-const CHOICES = [ "Current project", ...fs.readdirSync(`${__dirname}/templates`) ]; 
+let TEMPLATES = fs.readdirSync(`${__dirname}/templates`)
+TEMPLATES.splice(0, 1)
+const CHOICES = [ "Initialize current project", ...TEMPLATES ]; 
 
 
 
@@ -29,7 +38,7 @@ const NAME_QUESTION = {
 module.exports = (args) => {
 
   inquirer.prompt([PROJECT_QUESTION])
-  .then(answers => {
+  .then(async (answers) => {
     
     
     let projectChoice;
@@ -41,18 +50,24 @@ module.exports = (args) => {
       if(projectName){
         fs.mkdirSync(`${CURR_DIR}/${projectName}`);
       }
-  
-      createDirectoryContents(templatePath, projectName);
+      
+      const spinner = ora('Creating project...').start();
+      await createDirectoryContents(templatePath, projectName, spinner);
+      spinner.succeed("Proyecto iniciado exitosamente");
+
     }else{
       projectChoice = answers['project-choice']
-      inquirer.prompt([NAME_QUESTION]).then(answers => {
+      inquirer.prompt([NAME_QUESTION]).then(async (answers) => {
         projectName = answers['project-name']
         const templatePath = `${__dirname}/templates/${projectChoice}`;
         if(projectName){
           fs.mkdirSync(`${CURR_DIR}/${projectName}`);
         }
-    
-        createDirectoryContents(templatePath, projectName);
+        
+        const spinner = ora('Creating project...').start();
+        await createDirectoryContents(templatePath, projectName, spinner);
+        spinner.succeed("Contents created!");
+        console.log(boxen(`${chalk.yellowBright(projectName)} ( Made with: ${chalk.yellow(projectChoice)} template ) \n ${chalk.magenta(concat(["run cd ", projectName, " && engineer build"]).replace(/[,]/g,''))}`, { padding : 2, borderStyle : 'double' }))
       })
     }
   

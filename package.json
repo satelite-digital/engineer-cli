@@ -1,6 +1,6 @@
 {
   "name": "@ericksatelite/engineer-cli",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,9 +25,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ericksatelite/engineer": "^1.1.1",
+    "@ericksatelite/engineer": "^1.1.2",
+    "chalk": "^4.1.0",
     "inquirer": "^7.3.3",
     "minimist": "^1.2.5",
-    "ora": "^5.1.0"
+    "ora": "^5.1.0",
+    "update-notifier": "^4.1.1"
   }
 }

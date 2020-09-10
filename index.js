@@ -17,11 +17,8 @@ module.exports = () => {
     case 'init':
       require('./cmds/init')(args)
       break
-    case 'add':
-      require('./cmds/add')(args)
-      break
-    case 'start':
-      require('./cmds/start')(args)
+    case 'studio':
+      require('./cmds/studio')(args)
       break
     case 'build':
       require('./cmds/build')(args)
