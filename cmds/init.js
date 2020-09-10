@@ -1,8 +1,5 @@
-const ora = require('ora')
+const init = require("./init/")
 
 module.exports = (args) => {
-  const spinner = ora().start()
-  setTimeout(function(){
-    spinner.stop()
-  }, 5000)
+  init(args)
 }
