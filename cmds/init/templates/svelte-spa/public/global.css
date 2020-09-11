@@ -1,0 +1,97 @@
+html,
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+:root{
+	--formspace-primary: #0000FF;
+	--formspace-primary-light: #4E4EFF;
+	--formspace-primary-dark: #0000DB;
+	--formspace-secondary: #15CEBC;
+	--formspace-secondary-light: #0FFDE6;
+	--formspace-secondary-dark: #11BEAD;
+}
+body {
+	color: #333;
+	margin: 0;
+	padding: 8px;
+	box-sizing: border-box;
+	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+
+}
+
+p {
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+p::first-letter {
+	text-transform: capitalize
+}
+
+a {
+	color: rgb(0, 100, 200);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	color: rgb(0, 80, 160);
+}
+
+label {
+	display: block;
+}
+
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-padding: 0.4em 0;
+	padding: 0.4em;
+	margin: 0 0 0.5em 0;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+
+input:disabled {
+	color: #ccc;
+}
+
+button {
+	color: #333;
+	background-color: #f4f4f4;
+	outline: none;
+}
+
+button:disabled {
+	color: #999;
+}
+
+button:not(:disabled):active {
+	background-color: #ddd;
+}
+
+button:focus {
+	border-color: #666;
+}
+
+.toasts > .toast {
+	min-width: 25vw!important;
+}
+
+.toasts {
+	margin-top: 8em;
+}

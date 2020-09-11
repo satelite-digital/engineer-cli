@@ -1,0 +1,7 @@
+{
+    "number": ["Número", "Texto", "Párrafo"],
+    "string": ["Texto", "Párrafo"],
+    "boolean": ["Si/No"],
+    "date/string": ["Fecha", "Texto", "Párrafo"],
+    "array": ["Listado", "Listado múltiple", "Selección única", "Selección múltiple"]
+}

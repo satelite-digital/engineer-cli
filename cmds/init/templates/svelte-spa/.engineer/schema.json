@@ -1,0 +1,237 @@
+{
+    "app" : {
+        "scope" : "@ericksatelite",
+        "id" : "node-rest-api",
+        "name" : "Node REST API template",
+        "host" : "http://localhost:3000"
+    },
+    "model" : [
+        {
+            "id" : "user",
+            "name" : "User",
+            "ui" : {
+                "options" : {
+                    "isUser" : true
+                }
+            },
+            "fields" : [
+                {
+                    "id" : "authId",
+                    "type" : "String",
+                    "options" : {
+                        "optional" : true
+                    }
+                },
+                {
+                    "id" : "email",
+                    "type" : "String",
+                    "options" : {
+                        "unique" : true
+                    }
+                },
+                {
+                    "id" : "name",
+                    "type" : "String"
+                },
+                {
+                    "id" : "picture",
+                    "type" : "String",
+                    "options" : {
+                        "optional" : true
+                    }
+                },
+                {
+                    "id" : "type",
+                    "type" : "UserType"
+                }
+            ],
+            "children" : [
+                {
+                    "id" : "post",
+                    "name" : "Post"
+                },
+                {
+                    "id" : "editor",
+                    "name" : "Editor"
+                },
+                {
+                    "id" : "blog",
+                    "name" : "Blog"
+                },
+                {
+                    "id" : "session",
+                    "name" : "Session"
+                }
+            ]
+        },
+        {
+            "id" : "blog",
+            "name" : "Blog",
+            "fields" : [
+                {
+                    "id" : "name",
+                    "type" : "String"
+                },
+                {
+                    "id" : "description",
+                    "type" : "String"
+                },
+                {
+                    "id" : "coverURL",
+                    "type" : "String"
+                }
+            ],
+            "children" : [
+                {
+                    "id" : "user",
+                    "name" : "User"
+                },
+                {
+                    "id" : "editor",
+                    "name" : "Editor"
+                }
+            ]
+        },
+        {
+            "id" : "post",
+            "name" : "Post",
+            "options" : {
+                "softDelete" : "isArchived",
+                "log" : {
+                    "logger" : "postLog",
+                    "data" : "post",
+                    "actions" :  [
+                        { "create" : true, "use" : "CREATE" },
+                        { "findOne" : true, "use" : "OPEN" },
+                        { "update" : true, "use" : "UPDATE" },
+                        { "delete" : true, "use" : "DELETE" }
+                    ]
+                }
+            },
+            "fields" : [
+                {
+                    "id" : "title",
+                    "type" : "String"
+                },
+                {
+                    "id" : "description",
+                    "type" : "String",
+                    "options" : {
+                        "optional" : true
+                    }
+                },
+                {
+                    "id" : "tags",
+                    "type" : "Json",
+                    "options" : {
+                        "optional" : true
+                    }
+                },
+                {
+                    "id" : "isPublished",
+                    "type" : "Boolean",
+                    "options" : {
+                        "default" : "false"
+                    }
+                }
+            ],
+            "parents" : [
+                {
+                    "id" : "user",
+                    "name" : "User",
+                    "options" : {
+                        "optional" : true,
+                        "isCreator" : true
+                    }
+                },
+                {
+                    "id" : "blog",
+                    "name" : "Blog",
+                    "options" : {
+                        "optional" : true
+                    }
+                }
+            ]
+        },
+        {
+            "id" : "editor",
+            "name" : "Editor",
+            "fields" : [
+                {
+                    "id" : "type",
+                    "type" : "EditorType"
+                }
+            ],
+            "parents" : [
+                {
+                    "id" : "blog",
+                    "name" : "Blog"
+                },
+                {
+                    "id" : "user",
+                    "name" : "User",
+                    "options" : {
+                        "isCreator" : true
+                    }
+                }
+            ]
+        },
+        {
+            "id" : "post_log",
+            "name" : "PostLog",
+            "fields" : [
+                {
+                    "id" : "action",
+                    "type" : "PostLogAction"
+                },
+                {
+                    "id" : "record",
+                    "type" : "Json"
+                }
+            ],
+            "parents" : [
+                {
+                    "id" : "post",
+                    "name" : "Post"
+                },
+                {
+                    "id" : "user",
+                    "name" : "User",
+                    "options" : {
+                        "isCreator" : true
+                    }
+                }
+            ]
+        }
+    ],
+    "enums" : [
+        {
+            "name" : "EditorType",
+            "id" : "editortype",
+            "values" : [
+                "EDIT",
+                "ADMIN"
+            ]
+        },
+        {
+            "name" : "PostLogAction",
+            "id" : "postlogaction",
+            "values" : [
+                "OPEN",
+                "DELETE",
+                "UPDATE",
+                "CREATE"
+            ]
+        },
+        {
+            "name" : "UserType",
+            "id" : "usertype",
+            "values" : [
+                "ADMIN",
+                "BLOGGER",
+                "READER",
+                "EDITOR"
+            ]
+        }
+    ]
+}
