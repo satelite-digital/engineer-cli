@@ -27,6 +27,8 @@
   "dependencies": {
     "@ericksatelite/engineer": "^1.2.2",
     "chalk": "^4.1.0",
+    "fs-jetpack": "^3.1.0",
+    "github-download": "^0.5.0",
     "inquirer": "^7.3.3",
     "minimist": "^1.2.5",
     "ora": "^5.1.0",

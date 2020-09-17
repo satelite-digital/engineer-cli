@@ -4,14 +4,18 @@ const ora = require("ora")
 const boxen = require("boxen")
 const chalk = require("chalk")
 const createDirectoryContents = require("./createDirectoryContents")
+const downloadTemplate = require("./downloadTemplate")
+const deleteTemplate = require("./deleteTemplate")
 
 const concat = function(strings){
   return strings.join()
 }
 
 const CURR_DIR = process.cwd();
-let TEMPLATES = fs.readdirSync(`${__dirname}/templates`)
-TEMPLATES.splice(0, 1)
+// let TEMPLATES = fs.readdirSync(`${__dirname}/templates`)
+let TEMPLATES = require(`${__dirname}/templates/index.js`)
+// console.log('templates')
+// TEMPLATES.splice(0, 1)
 const CHOICES = [ "Initialize current project", ...TEMPLATES ]; 
 
 
@@ -59,6 +63,8 @@ module.exports = (args) => {
       projectChoice = answers['project-choice']
       inquirer.prompt([NAME_QUESTION]).then(async (answers) => {
         projectName = answers['project-name']
+        const downloadedTemplate = await downloadTemplate(`satelite-digital`, `${projectChoice}`)
+        console.log('downloadedTemplate',downloadedTemplate)
         const templatePath = `${__dirname}/templates/${projectChoice}`;
         if(projectName){
           fs.mkdirSync(`${CURR_DIR}/${projectName}`);
@@ -67,6 +73,8 @@ module.exports = (args) => {
         const spinner = ora('Creating project...').start();
         await createDirectoryContents(templatePath, projectName, spinner);
         spinner.succeed("Contents created!");
+        await deleteTemplate(projectChoice)
+        spinner.succeed("Template deleted"); 
         console.log(boxen(`${chalk.yellowBright(projectName)} ( Made with: ${chalk.yellow(projectChoice)} template ) \n ${chalk.magenta(concat(["run cd ", projectName, " && engineer build"]).replace(/[,]/g,''))}`, { padding : 2, borderStyle : 'double' }))
       })
     }

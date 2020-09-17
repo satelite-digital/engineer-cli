@@ -1,4 +1,0 @@
-{{#each demo}}
-{{this}}
-{{/each}}
-
