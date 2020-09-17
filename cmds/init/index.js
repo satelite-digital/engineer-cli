@@ -50,7 +50,7 @@ module.exports = (args) => {
     if(answers['project-choice'] == 'Initialize current project'){
       projectChoice = 'init';
       projectName = false;
-      const templatePath = `${__dirname}/templates/${projectChoice}`;
+      const templatePath = `${process.cwd()}/_templates/${projectChoice}`;
       if(projectName){
         fs.mkdirSync(`${CURR_DIR}/${projectName}`);
       }
