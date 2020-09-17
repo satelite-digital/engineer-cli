@@ -1,4 +1,4 @@
-{{#each demo}}
-{{this}}
+{{#each model}}
+- {{this}}
 {{/each}}
 

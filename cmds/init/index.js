@@ -43,7 +43,7 @@ module.exports = (args) => {
     
     let projectChoice;
     let projectName = false;
-    if(answers['project-choice'] == 'Current project'){
+    if(answers['project-choice'] == 'Initialize current project'){
       projectChoice = 'init';
       projectName = false;
       const templatePath = `${__dirname}/templates/${projectChoice}`;
