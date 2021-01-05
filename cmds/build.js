@@ -1,5 +1,5 @@
-const engineer = require("@ericksatelite/engineer")
+const {build} = require("@ericksatelite/engineer")
 
 module.exports = (args) => {
-  engineer()
+  build()
 }

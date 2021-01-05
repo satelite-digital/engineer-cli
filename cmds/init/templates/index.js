@@ -1,7 +1,8 @@
 module.exports = [
-  "node-rest",
-  "svelte-spa",
-  "svelte-pwa",
-  "svelte-blog",
-  "svelte-landing"
+  "node-rest-api",
+  "svelte-pwa-tsg",
+  // "svelte-pwa-spa",
+  // "svelte-pwa-tsg",
+  // "svelte-website",
+  // "svelte-landing",
 ]
