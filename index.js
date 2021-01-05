@@ -26,6 +26,9 @@ module.exports = () => {
     case 'cleanup':
       require('./cmds/cleanup')(args)
       break
+    case 'add':
+      require('./cmds/add')(args)
+      break
     case 'version':
       require('./cmds/version')(args)
       break
