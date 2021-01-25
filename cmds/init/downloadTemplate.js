@@ -13,6 +13,9 @@ const { resolve } = require('path');
 const downloadTemplate = async (user, repo, spinner = ora('Descargando plantilla').start())=>{
   
   return new Promise(async (resolve, reject) =>{
+
+
+    console.log(path.resolve(`${__dirname}/templates`))
     
 
       execSync(`git clone https://github.com/${user}/${repo}`, {
