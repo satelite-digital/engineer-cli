@@ -1,4 +1,4 @@
-const {add} = require("@ericksatelite/engineer")
+const {add} = require("@satelite/engineer")
 
 module.exports = (args) => {
   add()

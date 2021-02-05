@@ -1,4 +1,4 @@
-const {cleanup} = require("@ericksatelite/engineer")
+const {cleanup} = require("@satelite/engineer")
 
 module.exports = (args) => {
   cleanup(process.cwd())
