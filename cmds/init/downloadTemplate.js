@@ -10,12 +10,14 @@ const { resolve } = require('path');
 
 
 
-const downloadTemplate = async (user, repo, spinner = ora('Descargando plantilla').start())=>{
+const downloadTemplate = async (user, repo, spinner = ora('Descargando plantilla'))=>{
   
   return new Promise(async (resolve, reject) =>{
 
 
-    console.log(path.resolve(`${__dirname}/templates`))
+    console.log(path.resolve(`${__dirname}/templates/${repo}`))
+
+      const remove = await fs.removeAsync(`${__dirname}/templates/${repo}`)
     
 
       execSync(`git clone https://github.com/${user}/${repo}`, {
@@ -27,7 +29,7 @@ const downloadTemplate = async (user, repo, spinner = ora('Descargando plantilla
 
 
 
-      spinner.stop()
+      // spinner.stop()
       
       resolve()
       

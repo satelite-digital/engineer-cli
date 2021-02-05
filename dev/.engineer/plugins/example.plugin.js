@@ -1,4 +1,4 @@
 module.exports = async (config)=>{
-  config.model.hello_world = true
+  config.data.message = "Hello, World!"
   return config
 }
