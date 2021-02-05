@@ -1,6 +1,6 @@
 module.exports = [
-  "node-rest-api",
-  "svelte-pwa-tsg",
+  "node-minimal-template",
+  "svelte-minimal-template",
   // "svelte-pwa-spa",
   // "svelte-pwa-tsg",
   // "svelte-website",
