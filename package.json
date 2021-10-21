@@ -1,0 +1,25 @@
+{
+  "name": "engineer-cli",
+  "version": "1.1.0",
+  "description": "",
+  "main": "bin/index.js",
+  "bin": {
+    "engineer": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satelite-digital/engineer-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satelite-digital/engineer-cli/issues"
+  },
+  "homepage": "https://github.com/satelite-digital/engineer-cli#readme",
+  "dependencies": {
+    "@satelite/engineer": "^3.3.1"
+  }
+}
